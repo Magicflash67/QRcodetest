@@ -1,39 +1,29 @@
+<!-- Index.html file -->
 <!DOCTYPE html>
-<html>
-<head>
-  <title>QR Code Scanner</title>
-</head>
-<body>
-  <input type="file" accept="image/*;capture=camera" id="fileInput" style="display: none" />
-  <label for="fileInput" style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></label>
-  <div id="result"></div>
+<html lang="en">
 
-  <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2"></script>
-  <script>
-    document.getElementById('fileInput').addEventListener('change', function(e) {
-      var file = e.target.files[0];
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        var img = new Image();
-        img.onload = function() {
-          Quagga.decodeSingle({
-            decoder: {
-              readers: ["code_128_reader"] // You can specify different types of barcode readers here
-            },
-            locate: true,
-            src: e.target.result
-          }, function(result){
-            if(result && result.codeResult) {
-              document.getElementById('result').innerText = result.codeResult.code;
-            } else {
-              document.getElementById('result').innerText = "No QR code found";
-            }
-          });
-        };
-        img.src = e.target.result;
-      }
-      reader.readAsDataURL(file);
-    });
-  </script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet"
+		href="style.css">
+	<title>QR Code Scanner / Reader
+	</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Scan QR Codes</h1>
+		<div class="section">
+			<div id="my-qr-reader">
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://unpkg.com/html5-qrcode">
+	</script>
+	<script src="script.js"></script>
 </body>
+
 </html>
