@@ -4,11 +4,11 @@
   <title>QR Code Scanner</title>
 </head>
 <body>
-  <input type="file" accept="image/*" capture="environment" id="fileInput" style="display: none" />
+  <input type="file" accept="image/*;capture=camera" id="fileInput" style="display: none" />
   <label for="fileInput" style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></label>
   <div id="result"></div>
 
-  <script src="<link>https://cdn.jsdelivr.net/npm/@ericblade/quagga2</link>"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2"></script>
   <script>
     document.getElementById('fileInput').addEventListener('change', function(e) {
       var file = e.target.files[0];
